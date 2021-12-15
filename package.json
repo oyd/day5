@@ -19,6 +19,6 @@
   },
   "scripts": {
     "start": "node dist/server.js",
-    "build-server": "esbuild server.js --platform=node --bundle --minify --outfile=dist/server.js"
+    "build-server": "esbuild src/server/server.js --platform=node --bundle --minify --outfile=dist/server.js"
   }
 }

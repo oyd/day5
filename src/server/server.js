@@ -19,11 +19,8 @@ function databaseInitialize() {
   // kick off any program logic or start listening to external events
   const app = express();
   app.use(express.static(path.join(__dirname, 'www')));
-  app.get('/day', (req, res) => {
-    var version = settings.findOne({'key': 'version'});
-    version.value += 1;
-    settings.update(version);
-    res.send(`Have a good day! Welcome to version ${version.value}!`);
+  app.get('/api/holidays/', (req, res) => {
+    res.send('[{"2022-01-01": "us-new-year"}, {"2022-01-17":"us-martin"}]');
   });
   app.listen(9000, () => console.log('Day 5 is listening on port 9000!'));
   
