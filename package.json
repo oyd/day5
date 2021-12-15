@@ -4,14 +4,18 @@
   "description": "Track productivity on daily basis",
   "main": "server.js",
   "repository": "https://github.com/oyd/day5.git",
-  "author": "dolzhanskiy.oleg@gmail.com",
+  "author": "dolzhansky.oleg@gmail.com",
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "lokijs": "^1.5.12",
+    "react": "^17.0.2",
+    "roboto-fontface": "^0.10.0"
   },
   "devDependencies": {
-    "esbuild": "^0.14.3"
+    "esbuild": "^0.14.3",
+    "webpack": "^5.65.0"
   },
   "scripts": {
     "start": "node dist/server.js",
