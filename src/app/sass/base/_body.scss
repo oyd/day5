@@ -1,0 +1,6 @@
+@use '../shared/colors';
+
+body {
+    background-color: colors.color(gray, 0);
+    color: colors.color(black, 10);
+}
