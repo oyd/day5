@@ -1,0 +1,8 @@
+@use '../shared/space';
+@use '../shared/colors';
+@use '../shared/ui';
+
+.app {
+    @include space.above(2);
+    @include space.below;
+}

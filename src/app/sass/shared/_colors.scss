@@ -1,17 +1,23 @@
 @use 'sass:list';
 
 // Colors
-$palette: (
+
+$_palette: (
     gray: #f6f6f6 #4e4744,
     red: #f3d7d7 #b30030,
     green: #e0f3d7 #446600,
     blue: #e4eff2 #00528c,
-    black: #262613 #000000
+    black: #262613 #000000,
+    white: #ffffff #ece7d9
 );
 
-@function color($color, $tone: 0) {
-    $color-list: map-get($palette, $color);
+@function get($color, $tone: 0) {
+    $color-list: map-get($_palette, $color);
     $color-0: list.nth($color-list, 1);
     $color-u: list.nth($color-list, -1);
     @return mix($color-u, $color-0, $tone * 10%);
+}
+
+@function line($color, $tone: 0) {
+    @return 1px solid get($color, $tone);
 }

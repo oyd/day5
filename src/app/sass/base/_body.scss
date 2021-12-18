@@ -1,6 +1,6 @@
-@use '../shared/colors';
+@use '../shared/ui';
 
 body {
-    background-color: colors.color(gray, 0);
-    color: colors.color(black, 10);
+    background-color: ui.$bg;
+    color: ui.$fg;
 }

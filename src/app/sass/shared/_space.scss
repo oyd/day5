@@ -1,0 +1,25 @@
+$_space: 2rem;
+
+@mixin width($times: 1) {
+    width: $_space * $times;
+}
+
+@mixin height($times: 1) {
+    height: $_space * $times;
+}
+
+@mixin above($times: 1) {
+    margin-top: $_space * $times;
+}
+
+@mixin below($times: 1) {
+    margin-bottom: $_space * $times;
+}
+
+@mixin to-the-right($times: 1) {
+    margin-right: $_space * $times;
+}
+
+@mixin to-the-left($times: 1) {
+    margin-left: $_space * $times;
+}

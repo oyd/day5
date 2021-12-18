@@ -1,0 +1,25 @@
+@use '../shared/ui';
+@use '../shared/space';
+@use '../shared/colors';
+
+$navpanel-line: colors.line(gray, 1);
+$navpanel-active-bg: colors.get(gray, 1);
+
+.navpanel {
+    @include space.below;
+    .navbar-nav {
+        width: 100%;
+        background-color: ui.$accent-bg;
+        border: $navpanel-line;
+        border-radius: ui.$radius;
+        .nav-link {
+            padding: 1rem;
+            &.active {
+                background-color: $navpanel-active-bg;
+            }
+        }
+        .dropdown-menu {
+            font-size: ui.$font-size;
+        }
+    }
+}

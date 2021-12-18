@@ -1,0 +1,13 @@
+@use 'colors';
+
+$font-size: 0.9rem;
+
+$bg: colors.get(gray, 0);
+$fg: colors.get(black, 10);
+
+$accent-bg: colors.get(white, 0);
+
+$outer-line: colors.line(gray, 3);
+$inner-line: colors.line(gray, 1);
+
+$radius: 0.25rem;

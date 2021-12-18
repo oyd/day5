@@ -38,6 +38,9 @@ module.exports = {
             },
         ],
     },
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
     plugins: [
         new HtmlWebpackPlugin({ template: './src/app/index.html' }),
         new MiniCssExtractPlugin({ filename: 'css/app.css' }),
