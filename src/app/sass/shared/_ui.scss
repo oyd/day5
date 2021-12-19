@@ -5,9 +5,23 @@ $font-size: 0.9rem;
 $bg: colors.get(gray, 0);
 $fg: colors.get(black, 10);
 
+$link-fg: colors.get(blue, 10);
+
 $accent-bg: colors.get(white, 0);
 
 $outer-line: colors.line(gray, 3);
 $inner-line: colors.line(gray, 1);
 
+$outer-line-blue: colors.line(blue, 3);
+$inner-line-blue: colors.line(blue, 1);
+
+$header-bg: colors.get(blue, 1);
+
 $radius: 0.25rem;
+
+@mixin clickable($hover-background: colors.get(blue, 0)) {
+    cursor: pointer;
+    &:hover {
+        background-color: $hover-background;
+    }
+}

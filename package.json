@@ -15,7 +15,9 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.3",
     "react-dom": "^17.0.2",
-    "roboto-fontface": "^0.10.0"
+    "react-router-dom": "6",
+    "roboto-fontface": "^0.10.0",
+    "zustand": "^3.6.7"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
@@ -38,7 +40,8 @@
   "scripts": {
     "start": "node dist/server.js",
     "build-server": "esbuild src/server/server.js --platform=node --bundle --minify --outfile=dist/server.js",
-    "build-client": "webpack --mode production",
-    "prettier": "prettier --write --single-quote --tab-width 4 \"src/**/*.{js,jsx}\" "
+    "build-client": "webpack --mode=development",
+    "build-client-prod": "webpack --mode=production",
+    "prettier": "prettier --write --single-quote --tab-width 4 --print-width 120 \"src/**/*.{js,jsx}\" "
   }
 }

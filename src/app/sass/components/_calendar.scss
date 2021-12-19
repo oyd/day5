@@ -1,0 +1,67 @@
+@use "sass:math";
+@use '../shared/space';
+@use '../shared/ui';
+@use '../shared/colors';
+@use '../shared/tables';
+
+$td-width: math.div(100%, 7);
+
+.calendar {
+    @include space.below;
+    @include tables.custom(ui.$radius, 0.3rem 0, ui.$accent-bg, ui.$outer-line-blue, ui.$inner-line-blue, ui.$inner-line-blue);
+    width: 100%;
+    th, td {
+        text-align: center;
+        font-size: 0.85rem;
+    }
+    th {
+        font-weight: normal;
+    }
+    .prev, .up, .next {
+        background-color: ui.$header-bg;
+    }
+    .up, .next {
+        border-left: 0;
+    }
+    .up {
+        text-transform:capitalize;
+        width: $td-width * 5;
+    }
+    .dow {
+        border-top: ui.$outer-line-blue;
+        background-color: colors.get(blue, 0);
+        color: colors.get(black, 0);
+        width: $td-width;
+        text-transform: capitalize;
+    }
+    .up, .prev, .next, .day, .month, .year {
+        color: ui.$link-fg;
+    }
+    .highlighted {
+        background-color: colors.get(green, 0);
+    }
+    .months, .years {
+        padding: 0;
+        overflow: hidden;
+    }
+    .month, .year {
+        display: block;
+        width: 25%;
+        padding: 0.3rem;
+        float: left;
+    }
+    .up, .prev, .next {
+        @include ui.clickable(colors.get(blue, 2));
+    }
+    .day, .month, .year {
+        @include ui.clickable;
+    }
+    .old, .new {
+        color: colors.get(gray, 2);
+        background-color: colors.get(gray, 0);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAgMAAAC5YVYYAAAACVBMVEVMaXHu7u7d3d360f/DAAAAAXRSTlMAQObYZgAAABZJREFUeAFjcHJi4ORkUFFhmDABmQ0AKcoD/XI6hs0AAAAASUVORK5CYII=');
+    }
+    .today {
+        border: 2px solid colors.get(red,6);
+    }
+}

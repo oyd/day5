@@ -1,4 +1,4 @@
-$_space: 2rem;
+$_space: 1.5rem;
 
 @mixin width($times: 1) {
     width: $_space * $times;

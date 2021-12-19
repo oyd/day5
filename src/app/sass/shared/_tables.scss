@@ -1,0 +1,45 @@
+@mixin custom($radius, $padding, $background-color, $outer-border, $vertical-border, $horisontal-border) {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: $outer-border;
+    border-radius: $radius;
+    border-left: 0px;
+    border-top: 0px;
+    background-color: $background-color;
+
+    td, th {
+        border-left: $vertical-border;
+        border-top: $horisontal-border;
+        padding: $padding;
+    }
+
+    tr:first-child {
+        td, th {
+            border-top: $outer-border;
+        }
+
+        > :first-child {
+            border-top-left-radius: $radius;
+        }
+
+        > :last-child {
+            border-top-right-radius: $radius;
+        }
+    }
+
+    tr {
+        > :first-child {
+            border-left: $outer-border;
+        }
+    }
+
+    tr:last-child {
+        > :first-child {
+            border-bottom-left-radius: $radius;
+        }
+
+        > :last-child {
+            border-bottom-right-radius: $radius;
+        }
+    }
+}
