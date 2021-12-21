@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DateTime, Info } from 'luxon';
 
 const Calendar = (props) => {
-    const [displayDate, setDisplayDate] = useState(DateTime.now().startOf('month'));
+    const [displayDate, setDisplayDate] = useState(DateTime.fromISO(props.selectedDate).startOf('month'));
     const [displayMode, setDisplayMode] = useState('month'); // Other values could be 'year' or 'decade'
     //const firstDayOfWeek = i18n.g.firstDayOfWeek;
     const firstDayOfWeek = 0; // 0 - Monday, 6 - Sunday
+
+    useEffect(() => {
+        setDisplayDate(DateTime.fromISO(props.selectedDate).startOf('month'));
+    }, [props.selectedDate]);
 
     // Helper functions
 
@@ -106,8 +110,9 @@ const Calendar = (props) => {
         //weeks.push(renderDoWRow());
         const weeks = [...Array(weeksCount)].map((value, i) => {
             const weekRow = [...Array(7)].map((value, j) => {
-                let styles = ['day'];
                 const d = firstDisplayDate.plus({ days: i * 7 + j });
+                const dStr = d.toISODate();
+                let styles = ['day'];
                 if (highlightedDays.indexOf(d.weekday) > -1) {
                     styles.push('highlighted');
                 }
@@ -123,15 +128,11 @@ const Calendar = (props) => {
                 if (+d === +today) {
                     styles.push('today');
                 }
-                /*if (this.props.match.params.date === d.toISODate()) {
+                if (props.selectedDate === dStr) {
                     styles.push('selected');
-                }*/
+                }
                 return (
-                    <td
-                        className={styles.join(' ')}
-                        key={d.valueOf()}
-                        onClick={() => props.onSelectDate(d)}
-                    >
+                    <td className={styles.join(' ')} key={d.valueOf()} onClick={() => props.onSelectDate(dStr)}>
                         {d.day}
                     </td>
                 );
@@ -149,7 +150,9 @@ const Calendar = (props) => {
         ));
         return (
             <tr>
-                <td className='months' colSpan={7}>{months}</td>
+                <td className="months" colSpan={7}>
+                    {months}
+                </td>
             </tr>
         );
     }
@@ -174,7 +177,9 @@ const Calendar = (props) => {
         const years = Array.from(Array(12).keys()).map((value, i) => renderYearLabel(startOfDecade + i - 1));
         return (
             <tr>
-                <td className='years' colSpan={7}>{years}</td>
+                <td className="years" colSpan={7}>
+                    {years}
+                </td>
             </tr>
         );
     }

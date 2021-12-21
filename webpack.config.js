@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src/app/js/App.jsx',
+    entry: './src/client/js/index.jsx',
     output: {
         path: path.join(__dirname, '/dist/www'),
         filename: 'js/app.js',
@@ -47,7 +47,7 @@ module.exports = {
         maxAssetSize: 512000
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: './src/app/index.html' }),
+        new HtmlWebpackPlugin({ template: './src/client/index.html' }),
         new MiniCssExtractPlugin({ filename: 'css/app.css' }),
         new CopyWebpackPlugin({
             patterns: [
