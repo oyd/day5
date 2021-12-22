@@ -8,6 +8,7 @@ const Navpanel = () => {
     const { pathname } = useLocation();
     const links = [
         { url: 'day', text: 'День' },
+        { url: 'settings', text: 'Настройки' },
         { url: 'about', text: 'О программе' },
     ];
     const urls = links.map((link) => link.url);
@@ -26,9 +27,7 @@ const Navpanel = () => {
 
     return (
         <Navbar className="navpanel">
-            <Nav activeKey={activeKey}>
-                {renderLinks()}
-            </Nav>
+            <Nav activeKey={activeKey}>{renderLinks()}</Nav>
         </Navbar>
     );
 };

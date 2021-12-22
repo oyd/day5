@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src/client/js/index.jsx',
+    entry: './src/client/js/Index.jsx',
     output: {
         path: path.join(__dirname, '/dist/www'),
         filename: 'js/app.js',

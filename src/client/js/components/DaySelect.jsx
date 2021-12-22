@@ -29,7 +29,7 @@ const DaySelect = () => {
             <Col md={2}>
                 <Calendar selectedDate={date} onSelectDate={selectDate} />
             </Col>
-            <Outlet />            
+            <Outlet />
         </Row>
     );
 };

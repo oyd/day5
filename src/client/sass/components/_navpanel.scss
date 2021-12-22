@@ -2,7 +2,7 @@
 @use '../shared/space';
 @use '../shared/colors';
 
-$navpanel-line: colors.line(gray, 1);
+$navpanel-line: colors.line(gray, 2);
 $navpanel-active-bg: colors.get(gray, 1);
 
 .navpanel {

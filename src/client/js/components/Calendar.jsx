@@ -186,20 +186,22 @@ const Calendar = (props) => {
 
     return (
         <table className="calendar">
-            <tr>
-                <th className="prev" onClick={prev}>
-                    🡠
-                </th>
-                <th className="up" colSpan="5" onClick={up}>
-                    {renderTitle()}
-                </th>
-                <th className="next" onClick={next}>
-                    🡢
-                </th>
-            </tr>
-            {displayMode === 'month' && renderMonthView()}
-            {displayMode === 'year' && renderYearView()}
-            {displayMode === 'decade' && renderDecadeView()}
+            <tbody>
+                <tr>
+                    <th className="prev" onClick={prev}>
+                        🡠
+                    </th>
+                    <th className="up" colSpan="5" onClick={up}>
+                        {renderTitle()}
+                    </th>
+                    <th className="next" onClick={next}>
+                        🡢
+                    </th>
+                </tr>
+                {displayMode === 'month' && renderMonthView()}
+                {displayMode === 'year' && renderYearView()}
+                {displayMode === 'decade' && renderDecadeView()}
+            </tbody>
         </table>
     );
 };
