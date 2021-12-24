@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { Settings as luxonSettings } from 'luxon';
 import { HashRouter, Routes, Route, Navigate, Outlet, useParams } from 'react-router-dom';
+import './other/i18n';
 import App from './components/App';
 import Day from './components/Day';
 import About from './components/About';

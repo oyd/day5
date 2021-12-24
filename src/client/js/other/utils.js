@@ -1,12 +1,3 @@
-function matchPathParts(path, parts, prfix = '') {
-    let result;
-    if (path.startsWith(prfix)) {
-        const pos = prfix.length;
-        result = parts.find((part) => path.startsWith(part, pos));
-    }
-    return result ? result : '';
-}
-
 function isValidDate(dateString) {
     var regEx = /^\d{4}-\d{2}-\d{2}$/;
     if (!dateString.match(regEx)) return false; // Invalid format
@@ -16,4 +7,4 @@ function isValidDate(dateString) {
     return d.toISOString().slice(0, 10) === dateString;
 }
 
-export { matchPathParts, isValidDate };
+export { isValidDate };
