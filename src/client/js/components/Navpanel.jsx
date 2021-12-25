@@ -1,19 +1,22 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 const Navpanel = () => {
-    const links = [
+    const { t } = useTranslation();
+    /*const links = [
         { url: 'day', text: 'День' },
         { url: 'settings', text: 'Настройки' },
         { url: 'about', text: 'О программе' },
-    ];
+    ];*/
+    const links = ['day', 'settings', 'about'];
 
     function renderLinks() {
         return links.map((link) => (
-            <Nav.Link to={link.url} as={NavLink} key={link.url}>
-                {link.text}
+            <Nav.Link to={link} as={NavLink} key={link}>
+                {t('link.'+link)}
             </Nav.Link>
         ));
     }
@@ -24,6 +27,5 @@ const Navpanel = () => {
         </Navbar>
     );
 };
-
 
 export default Navpanel;
