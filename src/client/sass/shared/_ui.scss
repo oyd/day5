@@ -6,6 +6,7 @@ $bg: colors.get(gray, 0);
 $fg: colors.get(black, 10);
 
 $link-fg: colors.get(blue, 10);
+$link-hover-fg: colors.get(blue, 5);
 
 $accent-bg: colors.get(white, 0);
 
@@ -19,9 +20,18 @@ $header-bg: colors.get(blue, 1);
 
 $radius: 0.25rem;
 
-@mixin clickable($hover-background: colors.get(blue, 0)) {
+@mixin clickable() {
     cursor: pointer;
+}
+
+@mixin hover-bg($hover-bg: colors.get(blue, 0)) {
     &:hover {
-        background-color: $hover-background;
+        background-color: $hover-bg;
+    }
+}
+
+@mixin hover-fg($hover-fg: colors.get(black, 10)) {
+    &:hover {
+        color: $hover-fg;
     }
 }

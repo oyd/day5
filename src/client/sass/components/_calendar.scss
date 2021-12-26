@@ -35,6 +35,7 @@ $td-width: math.div(100%, 7);
         text-transform: capitalize;
     }
     .up, .prev, .next, .day, .month, .year {
+        @include ui.clickable();
         color: ui.$link-fg;
     }
     .highlighted {
@@ -50,11 +51,17 @@ $td-width: math.div(100%, 7);
         padding: 0.3rem;
         float: left;
     }
+    
     .up, .prev, .next {
-        @include ui.clickable(colors.get(blue, 2));
+        @include ui.hover-bg(colors.get(blue, 2));
     }
-    .day, .month, .year {
-        @include ui.clickable;
+    .month, .year {
+        @include ui.hover-bg;
+    }
+    .day {
+        &:hover {
+            text-decoration-line: underline;
+        }
     }
     .old, .new {
         color: colors.get(gray, 2);
@@ -71,5 +78,11 @@ $td-width: math.div(100%, 7);
     }
     .today {
         border: 1px solid colors.get(red,6) !important;
+    }
+    .holiday {
+        background-color: colors.get(green, 1);
+    }
+    .vacation {
+        background-color: colors.get(blue, 1);
     }
 }

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { DateTime, Info } from 'luxon';
+import { useTranslation } from 'react-i18next';
 
 const Calendar = (props) => {
     const [displayDate, setDisplayDate] = useState(DateTime.fromISO(props.selectedDate).startOf('month'));
     const [displayMode, setDisplayMode] = useState('month'); // Other values could be 'year' or 'decade'
-    //const firstDayOfWeek = i18n.g.firstDayOfWeek;
-    const firstDayOfWeek = 0; // 0 - Monday, 6 - Sunday
+    const { i18n } = useTranslation();
+    const firstDayOfWeek = i18n.language === "en" ? 6 : 0; // 0 - Monday, 6 - Sunday
+    const highlightedDates = props.highlightedDates || {};
 
     useEffect(() => {
         setDisplayDate(DateTime.fromISO(props.selectedDate).startOf('month'));
@@ -106,8 +108,7 @@ const Calendar = (props) => {
             lastDisplayDate = _endOfWeek(lastDateOfMonth),
             weeksCount = Math.round(lastDisplayDate.diff(firstDisplayDate, 'weeks').weeks),
             highlightedDays = [6, 7]; // Highlight Sunday and Saturday
-
-        //weeks.push(renderDoWRow());
+        console.log('Calendar rendered');
         const weeks = [...Array(weeksCount)].map((value, i) => {
             const weekRow = [...Array(7)].map((value, j) => {
                 const d = firstDisplayDate.plus({ days: i * 7 + j });
@@ -131,8 +132,16 @@ const Calendar = (props) => {
                 if (props.selectedDate === dStr) {
                     styles.push('selected');
                 }
+                /*******/
+                //console.log(highlightedDates);
+                highlightedDates.map(({category, dates}) => {
+                    if (dates.indexOf(dStr) > -1) {
+                        styles.push(category);
+                    }
+                });
+                /*******/
                 return (
-                    <td className={styles.join(' ')} key={d.valueOf()} onClick={() => props.onSelectDate(dStr)}>
+                    <td className={styles.join(' ')} key={dStr} onClick={() => props.onSelectDate(dStr)}>
                         {d.day}
                     </td>
                 );

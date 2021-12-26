@@ -6,17 +6,12 @@ import { NavLink } from 'react-router-dom';
 
 const Navpanel = () => {
     const { t } = useTranslation();
-    /*const links = [
-        { url: 'day', text: 'День' },
-        { url: 'settings', text: 'Настройки' },
-        { url: 'about', text: 'О программе' },
-    ];*/
     const links = ['day', 'settings', 'about'];
 
     function renderLinks() {
         return links.map((link) => (
             <Nav.Link to={link} as={NavLink} key={link}>
-                {t('link.'+link)}
+                {t('link.' + link)}
             </Nav.Link>
         ));
     }

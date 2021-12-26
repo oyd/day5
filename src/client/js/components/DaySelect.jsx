@@ -18,6 +18,10 @@ const DaySelect = () => {
     const date = useAppStore((state) => state.date);
     const setDate = useAppStore((state) => state.setDate);
     const navigate = useNavigate();
+    const highlights = [
+        { category: 'holiday', dates: ['2021-12-25', '2022-01-01', '2022-01-02', '2022-01-17'] },
+        { category: 'vacation', dates: ['2022-01-05', '2022-01-06', '2022-01-07'] }
+    ];
 
     function selectDate(dStr) {
         setDate(dStr);
@@ -27,7 +31,7 @@ const DaySelect = () => {
     return (
         <Row className="day">
             <Col md={2}>
-                <Calendar selectedDate={date} onSelectDate={selectDate} />
+                <Calendar selectedDate={date} onSelectDate={selectDate} highlightedDates= {highlights}/>
             </Col>
             <Outlet />
         </Row>
