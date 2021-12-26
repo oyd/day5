@@ -107,24 +107,21 @@ const Calendar = (props) => {
             firstDisplayDate = _startOfWeek(firstDateOfMonth),
             lastDisplayDate = _endOfWeek(lastDateOfMonth),
             weeksCount = Math.round(lastDisplayDate.diff(firstDisplayDate, 'weeks').weeks),
-            highlightedDays = [6, 7]; // Highlight Sunday and Saturday
+            weekend = [6, 7]; // Highlight Sunday and Saturday
         console.log('Calendar rendered');
         const weeks = [...Array(weeksCount)].map((value, i) => {
             const weekRow = [...Array(7)].map((value, j) => {
                 const d = firstDisplayDate.plus({ days: i * 7 + j });
                 const dStr = d.toISODate();
                 let styles = ['day'];
-                if (highlightedDays.indexOf(d.weekday) > -1) {
-                    styles.push('highlighted');
-                }
-                /*if (d.toISODate() in this.state.holidays) {
-                    styles.push('holiday');
-                }*/
                 if (d < firstDateOfMonth) {
                     styles.push('old');
                 }
                 if (d > lastDateOfMonth) {
                     styles.push('new');
+                }
+                if (weekend.indexOf(d.weekday) > -1) {
+                    styles.push('weekend');
                 }
                 if (+d === +today) {
                     styles.push('today');
@@ -132,14 +129,11 @@ const Calendar = (props) => {
                 if (props.selectedDate === dStr) {
                     styles.push('selected');
                 }
-                /*******/
-                //console.log(highlightedDates);
                 highlightedDates.map(({category, dates}) => {
                     if (dates.indexOf(dStr) > -1) {
                         styles.push(category);
                     }
                 });
-                /*******/
                 return (
                     <td className={styles.join(' ')} key={dStr} onClick={() => props.onSelectDate(dStr)}>
                         {d.day}

@@ -38,7 +38,7 @@ $td-width: math.div(100%, 7);
         @include ui.clickable();
         color: ui.$link-fg;
     }
-    .highlighted {
+    .weekend {
         background-color: colors.get(green, 0);
     }
     .months, .years {
@@ -51,7 +51,6 @@ $td-width: math.div(100%, 7);
         padding: 0.3rem;
         float: left;
     }
-    
     .up, .prev, .next {
         @include ui.hover-bg(colors.get(blue, 2));
     }
@@ -69,12 +68,9 @@ $td-width: math.div(100%, 7);
         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAgMAAAC5YVYYAAAACVBMVEVMaXHu7u7d3d360f/DAAAAAXRSTlMAQObYZgAAABZJREFUeAFjcHJi4ORkUFFhmDABmQ0AKcoD/XI6hs0AAAAASUVORK5CYII=');
     }
     .selected {
-        /*background-color: colors.get(blue, 5);
-        color: colors.get(white, 0);*/
         text-decoration-line: underline;
         text-decoration-style: double;
         text-decoration-color: colors.get(red,6);
-        /*text-decoration-thickness: 2px;*/
     }
     .today {
         border: 1px solid colors.get(red,6) !important;
