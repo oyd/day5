@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 var config = {
     entry: './src/client/js/Index.jsx',
@@ -44,7 +45,8 @@ var config = {
     },
     plugins: [
         new HtmlWebpackPlugin({ template: './src/client/index.html' }),
-        new MiniCssExtractPlugin({ filename: 'css/app.css' })
+        new MiniCssExtractPlugin({ filename: 'css/app.css' }),
+        new FaviconsWebpackPlugin('./src/client/assets/Calendar.ico')
     ],
 };
 
