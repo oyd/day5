@@ -3,15 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = {
+var config = {
     entry: './src/client/js/Index.jsx',
     output: {
         path: path.join(__dirname, '/dist/www'),
         filename: 'js/app.js',
-    },
-    devServer: {
-        port: 3000,
-        watchContentBase: true,
     },
     module: {
         rules: [
@@ -48,14 +44,25 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({ template: './src/client/index.html' }),
-        new MiniCssExtractPlugin({ filename: 'css/app.css' }),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: './node_modules/bootstrap/dist/css/bootstrap.min.css',
-                    to: './css/bootstrap.min.css',
-                },
-            ],
-        }),
+        new MiniCssExtractPlugin({ filename: 'css/app.css' })
     ],
 };
+
+module.exports = (env, argv) => {
+
+    function getCopyPatterns() {
+        const sourcePath = './node_modules/bootstrap/dist/css/';
+        const destinationPath = './css/';
+        const cssName = 'bootstrap.min.css';
+        let patterns = [{from: sourcePath + cssName, to: destinationPath + cssName}];
+        if (argv.mode === 'development') {
+            const mapName = cssName + '.map';
+            patterns.push({from: sourcePath + mapName, to: destinationPath + mapName});
+        }
+        return patterns;
+    }
+
+    config.plugins.push(new CopyWebpackPlugin({ patterns: getCopyPatterns() }));
+
+    return config;
+}
