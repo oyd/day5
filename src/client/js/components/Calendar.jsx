@@ -6,8 +6,7 @@ const Calendar = (props) => {
     const [displayDate, setDisplayDate] = useState(DateTime.fromISO(props.selectedDate).startOf('month'));
     const [displayMode, setDisplayMode] = useState('month'); // Other values could be 'year' or 'decade'
     const { i18n } = useTranslation();
-    const firstDayOfWeek = i18n.language === "en" ? 6 : 0; // 0 - Monday, 6 - Sunday
-    const highlightedDates = props.highlightedDates || {};
+    const firstDayOfWeek = i18n.language === 'en' ? 6 : 0; // 0 - Monday, 6 - Sunday
 
     useEffect(() => {
         setDisplayDate(DateTime.fromISO(props.selectedDate).startOf('month'));
@@ -129,11 +128,13 @@ const Calendar = (props) => {
                 if (props.selectedDate === dStr) {
                     styles.push('selected');
                 }
-                highlightedDates.map(({category, dates}) => {
-                    if (dates.indexOf(dStr) > -1) {
-                        styles.push(category);
-                    }
-                });
+                if (props.highlights) {
+                    props.highlights.map(({ category, dates }) => {
+                        if (dates.indexOf(dStr) > -1) {
+                            styles.push(category);
+                        }
+                    });
+                }
                 return (
                     <td className={styles.join(' ')} key={dStr} onClick={() => props.onSelectDate(dStr)}>
                         {d.day}

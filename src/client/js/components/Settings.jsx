@@ -14,7 +14,11 @@ const Settings = () => {
                 <Form>
                     <Form.Group className="mb-3" controlId="formGroupLaguage">
                         <Form.Label>{t('language.lng')}</Form.Label>
-                        <Form.Select aria-label="Language Select" value={i18n.language} onChange={e => selectLanguage(e.target.value)}>
+                        <Form.Select
+                            aria-label="Language Select"
+                            value={i18n.language}
+                            onChange={(e) => selectLanguage(e.target.value)}
+                        >
                             {languages.map((l) => (
                                 <option value={l} key={l}>
                                     {t('language.' + l)}
