@@ -27,8 +27,11 @@ $td-width: math.div(100%, 7);
         text-transform:capitalize;
         width: $td-width * 5;
     }
-    .dow {
+    /* Border after first row */
+    .dow, .months, .years {
         border-top: ui.$outer-line-blue;
+    }
+    .dow {
         background-color: colors.get(blue, 0);
         color: colors.get(black, 0);
         width: $td-width;
