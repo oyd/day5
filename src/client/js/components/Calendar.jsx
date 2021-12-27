@@ -112,13 +112,16 @@ const Calendar = (props) => {
             const weekRow = [...Array(7)].map((value, j) => {
                 const d = firstDisplayDate.plus({ days: i * 7 + j });
                 const dStr = d.toISODate();
+                if (d < firstDateOfMonth || d > lastDateOfMonth) {
+                    return (<td className="outside" key={dStr}></td>);
+                }
                 let styles = ['day'];
-                if (d < firstDateOfMonth) {
+                /*if (d < firstDateOfMonth) {
                     styles.push('old');
                 }
                 if (d > lastDateOfMonth) {
                     styles.push('new');
-                }
+                }*/
                 if (weekend.indexOf(d.weekday) > -1) {
                     styles.push('weekend');
                 }
@@ -163,11 +166,8 @@ const Calendar = (props) => {
 
     function renderYearLabel(year) {
         let styles = ['year'];
-        if (year < _startOfDecade()) {
-            styles.push('old');
-        }
-        if (year > _endOfDecade()) {
-            styles.push('new');
+        if (year < _startOfDecade() || year > _endOfDecade()) {
+            styles.push('outside');
         }
         return (
             <span className={styles.join(' ')} key={year} onClick={() => selectYear(year)}>
