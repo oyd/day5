@@ -3,13 +3,13 @@ import Container from 'react-bootstrap/Container';
 import { Outlet } from 'react-router-dom';
 import Navpanel from './Navpanel';
 
-const App = () => {
+const ViewTopNav = () => {
     return (
-        <Container className="app">
+        <Container className="view-top-nav">
             <Navpanel />
             <Outlet />
         </Container>
     );
 };
 
-export default App;
+export default ViewTopNav;

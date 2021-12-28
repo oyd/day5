@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { HashRouter, Routes, Route, Navigate, Outlet, useParams } from 'react-router-dom';
 import './other/i18n';
-import App from './components/App';
+import ViewTopNav from './components/ViewTopNav';
 import Day from './components/Day';
 import About from './components/About';
 import useAppStore from './stores/useAppStore';
@@ -16,7 +16,7 @@ function Index() {
     return (
         <HashRouter>
             <Routes>
-                <Route path="/" element={<App />}>
+                <Route path="/" element={<ViewTopNav />}>
                     <Route path="day" element={<DaySelect />}>
                         <Route path=":date" element={<Day />} />
                         <Route index element={<Navigate to={defaultDate} />} />
