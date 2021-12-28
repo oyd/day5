@@ -1,12 +1,12 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import { Outlet } from 'react-router-dom';
-import Navpanel from './Navpanel';
+import TopNav from './TopNav';
 
 const ViewTopNav = () => {
     return (
         <Container className="view-top-nav">
-            <Navpanel />
+            <TopNav />
             <Outlet />
         </Container>
     );

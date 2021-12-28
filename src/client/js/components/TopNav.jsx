@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
-const Navpanel = () => {
+const TopNav = () => {
     const { t } = useTranslation();
     const links = ['day', 'settings', 'about'];
 
@@ -17,10 +17,10 @@ const Navpanel = () => {
     }
 
     return (
-        <Navbar className="navpanel">
+        <Navbar className="top-nav">
             <Nav>{renderLinks()}</Nav>
         </Navbar>
     );
 };
 
-export default Navpanel;
+export default TopNav;

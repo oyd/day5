@@ -2,20 +2,20 @@
 @use '../shared/space';
 @use '../shared/colors';
 
-$navpanel-line: colors.line(gray, 2);
-$navpanel-active-bg: colors.get(gray, 1);
+$top-nav-line: colors.line(gray, 2);
+$top-nav-active-bg: colors.get(gray, 1);
 
-.navpanel {
+.top-nav {
     @include space.below;
     .navbar-nav {
         width: 100%;
         background-color: ui.$accent-bg;
-        border: $navpanel-line;
+        border: $top-nav-line;
         border-radius: ui.$radius;
         .nav-link {
             padding: 1rem;
             &.active {
-                background-color: $navpanel-active-bg;
+                background-color: $top-nav-active-bg;
             }
         }
         .dropdown-menu {
