@@ -3,15 +3,15 @@ import { DateTime } from 'luxon';
 import { useParams, useNavigate } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import useAppStore from '../stores/useAppStore';
+import useUIStore from '../stores/useUIStore';
 
 const Day = () => {
-    const date = useAppStore((state) => state.date);
-    const setDate = useAppStore((state) => state.setDate);
+    const date = useUIStore((state) => state.date);
+    const setDate = useUIStore((state) => state.setDate);
     const params = useParams();
     const navigate = useNavigate();
 
-    // Runs every time after render
+    // Runs every time when renders (better if it's dependent on params.date?)
     useEffect(() => {
         if (date !== params.date) setDate(params.date);
     });

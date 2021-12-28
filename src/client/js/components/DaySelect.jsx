@@ -3,11 +3,11 @@ import { useNavigate, Outlet } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Calendar from './Calendar';
-import useAppStore from '../stores/useAppStore';
+import useUIStore from '../stores/useUIStore';
 
 const DaySelect = () => {
-    const date = useAppStore((state) => state.date);
-    const setDate = useAppStore((state) => state.setDate);
+    const date = useUIStore((state) => state.date);
+    const setDate = useUIStore((state) => state.setDate);
     const navigate = useNavigate();
     const highlights = [
         { category: 'holiday', dates: ['2021-12-25', '2022-01-01', '2022-01-02', '2022-01-17'] },

@@ -6,13 +6,13 @@ import './other/i18n';
 import ViewTopNav from './components/ViewTopNav';
 import Day from './components/Day';
 import About from './components/About';
-import useAppStore from './stores/useAppStore';
+import useUIStore from './stores/useUIStore';
 import DaySelect from './components/DaySelect';
 import Settings from './components/Settings';
 import selectLanguage from './other/selectLanguage';
 
 function Index() {
-    const defaultDate = useAppStore((state) => state.date);
+    const defaultDate = useUIStore((state) => state.date);
     return (
         <HashRouter>
             <Routes>
