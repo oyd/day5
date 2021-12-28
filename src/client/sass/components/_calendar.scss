@@ -64,7 +64,6 @@ $td-width: math.div(100%, 7);
     }
     .outside {
         color: colors.get(blue, 1);
-        background-color: colors.get(gray, 0);
         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAABbmlDQ1BpY2MAACiRdZG9S0JRGMZ/apGU4VBDVIODRYNCFERjGORiDWqQ1aLXr8CPy71KSGvQ0iA0RC19Df0HtQatBUFQBBEt/QN9LSG392ighJ7Lue+P55zn5ZzngD2U0/Jm1yTkCyUjHAx4VmKrnp43XIzgxok/rpn6YmQhSsfx/YBN1Xu/6tV5X9vRl0yZGticwjOabpSE54RDmyVd8a7woJaNJ4WPhX2GHFD4RumJBr8qzjT4U7ERDc+DXfX0ZFo40cJa1sgLTwh787my9ncedRNXqrAckToscxSTMEECeEhQZoMcJfxSC5JZe99k3bdEUTya/HUqGOLIkBWvT9SydE1JTYueki9HReX+P08zPT3V6O4KQPeLZX2MQc8e1KqW9XNiWbVTcDzDVaHpL0pOs1+iV5ua9wjc23Bx3dQS+3C5A0NPetyI1yWHTHs6De/n0B+DgTvoXWtk9bfO2SNEt+SJbuHgEMZlv3v9Fw7paBGzKiMRAAAACXBIWXMAAA9hAAAPYQGoP6dpAAAAKklEQVQIW2M4e/+FAwMUgNhA/J8RWQDI3g/EjmAxmAq4LgwBqKr/6OYCAA+TKMLcP03bAAAAAElFTkSuQmCC');
     }
     .selected {

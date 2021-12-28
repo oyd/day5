@@ -113,7 +113,7 @@ const Calendar = (props) => {
                 const d = firstDisplayDate.plus({ days: i * 7 + j });
                 const dStr = d.toISODate();
                 if (d < firstDateOfMonth || d > lastDateOfMonth) {
-                    return (<td className="outside" key={dStr}></td>);
+                    return <td className="outside" key={dStr}></td>;
                 }
                 let styles = ['day'];
                 /*if (d < firstDateOfMonth) {
