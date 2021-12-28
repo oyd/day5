@@ -11,21 +11,15 @@ DB({
 });
 
 const app = express();
-app.use(express.urlencoded({extended: true}));
-app.use(express.json()) // To parse the incoming requests with JSON payloads
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // To parse the incoming requests with JSON payloads
 app.use(express.static(path.join(__dirname, 'www')));
 
-const port = process.env.PORT || 9000;        // set our port
+const port = process.env.PORT || 9000; // set our port
 
 // Routes
 
 let router = express.Router();
-
-/*router.use(function(req, res, next) {
-    // do logging
-    console.log(req);
-    next(); // make sure we go to the next routes and don't stop here
-});*/
 
 // Routes /api/settings
 
@@ -33,15 +27,16 @@ function getSettings() {
     return DB().queryFirstRow('SELECT * FROM keyValues WHERE key=?', 'settings');
 }
 
-router.route('/settings')
-    .get(function(req, res) {
+router
+    .route('/settings')
+    .get(function (req, res) {
         res.send(getSettings().value);
     })
-    .put(function(req, res) {
+    .put(function (req, res) {
         const oldSettings = JSON.parse(getSettings().value);
-        const newSettings = {...oldSettings, ...req.body};
+        const newSettings = { ...oldSettings, ...req.body };
         const newSettingsStr = JSON.stringify(newSettings);
-        DB().update('keyValues', {value: newSettingsStr}, {key: 'settings'});
+        DB().update('keyValues', { value: newSettingsStr }, { key: 'settings' });
         console.log(newSettingsStr);
         res.send(newSettingsStr);
     });
