@@ -46,7 +46,10 @@ var config = {
     plugins: [
         new HtmlWebpackPlugin({ template: './src/client/index.html' }),
         new MiniCssExtractPlugin({ filename: 'css/app.css' }),
-        new FaviconsWebpackPlugin('./src/client/assets/Calendar.ico')
+        new FaviconsWebpackPlugin({
+            logo: './src/client/assets/Calendar.ico',
+            mode: 'light', // optional can be 'webapp', 'light' or 'auto' - 'auto' by default
+            devMode: 'light'})
     ],
 };
 

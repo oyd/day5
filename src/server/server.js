@@ -1,26 +1,19 @@
 const express = require('express');
 const path = require('path');
-const loki = require('lokijs');
+const DB = require('better-sqlite3-helper');
 
-var db = new loki(path.join(__dirname, 'db.json'), {
-    autoload: true,
-    autoloadCallback: databaseInitialize,
-    autosave: true,
-    autosaveInterval: 4000,
+DB({
+    path: 'day.db',
+    readonly: false, // read only
+    fileMustExist: true, // throw error if database not exists
+    WAL: true, // automatically enable 'PRAGMA journal_mode = WAL'
+    migrate: false,
 });
 
-// implement the autoloadback referenced in loki constructor
-function databaseInitialize() {
-    var settings = db.getCollection('settings');
-    if (settings === null) {
-        settings = db.addCollection('settings', { unique: ['key'] });
-    }
-
-    // kick off any program logic or start listening to external events
-    const app = express();
-    app.use(express.static(path.join(__dirname, 'www')));
-    app.get('/api/holidays/', (req, res) => {
-        res.send('[{"2022-01-01": "us-new-year"}, {"2022-01-17":"us-martin"}]');
-    });
-    app.listen(9000, () => console.log('Day 5 is listening on port 9000!'));
-}
+const app = express();
+app.use(express.static(path.join(__dirname, 'www')));
+app.get('/api/version', (req, res) => {
+    let row = DB().queryFirstRow('SELECT * FROM keyValues WHERE key=?', 'version');
+    res.send(JSON.stringify(row));
+});
+app.listen(9000, () => console.log('Day 5 is listening on port 9000!'));
