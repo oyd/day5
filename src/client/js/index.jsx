@@ -13,7 +13,7 @@ import useNavigateDate from './hooks/useNavigateDate';
 
 function NavigateDate() {
     const navigateDate = useNavigateDate();
-    useEffect(() => navigateDate(),[]);
+    useEffect(() => navigateDate(), []);
     return null;
 }
 

@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 @use '../shared/space';
 @use '../shared/ui';
 @use '../shared/colors';
@@ -8,27 +8,40 @@ $td-width: math.div(100%, 7);
 
 .calendar {
     @include space.below;
-    @include tables.custom(ui.$radius, 0.3rem 0 0.2rem, ui.$accent-bg, ui.$outer-line-blue, ui.$inner-line-blue, ui.$inner-line-blue);
+    @include tables.custom(
+        ui.$radius,
+        0.3rem 0 0.2rem,
+        ui.$accent-bg,
+        ui.$outer-line-blue,
+        ui.$inner-line-blue,
+        ui.$inner-line-blue
+    );
     width: 100%;
-    th, td {
+    th,
+    td {
         text-align: center;
         /*font-size: 0.9rem;*/
     }
     th {
         font-weight: normal;
     }
-    .prev, .up, .next {
+    .prev,
+    .up,
+    .next {
         background-color: ui.$header-bg;
     }
-    .up, .next {
+    .up,
+    .next {
         border-left: 0;
     }
     .up {
-        text-transform:capitalize;
+        text-transform: capitalize;
         width: $td-width * 5;
     }
     /* Border after first row */
-    .dow, .months, .years {
+    .dow,
+    .months,
+    .years {
         border-top: ui.$outer-line-blue;
     }
     .dow {
@@ -37,29 +50,40 @@ $td-width: math.div(100%, 7);
         width: $td-width;
         text-transform: capitalize;
     }
-    .up, .prev, .next, .day, .month, .year {
+    .up,
+    .prev,
+    .next,
+    .day,
+    .month,
+    .year {
         @include ui.clickable();
         color: ui.$link-fg;
     }
     .weekend {
         background-color: colors.get(green, 0);
     }
-    .months, .years {
+    .months,
+    .years {
         padding: 0;
         overflow: hidden;
     }
-    .month, .year {
+    .month,
+    .year {
         display: block;
         width: 25%;
         padding: 0.3rem;
         float: left;
     }
-    .up, .prev, .next {
+    .up,
+    .prev,
+    .next {
         @include ui.hover-bg(colors.get(blue, 2));
     }
-    .month, .year, .day {
+    .month,
+    .year,
+    .day {
         &:hover {
-            background-image: linear-gradient(0deg, rgba(160,192,211,0.4) 0%, rgba(160,192,211,0.2) 100%);
+            background-image: linear-gradient(0deg, rgba(160, 192, 211, 0.4) 0%, rgba(160, 192, 211, 0.2) 100%);
         }
     }
     .outside {
@@ -69,10 +93,10 @@ $td-width: math.div(100%, 7);
     .selected {
         text-decoration-line: underline;
         text-decoration-style: double;
-        text-decoration-color: colors.get(red,6);
+        text-decoration-color: colors.get(red, 6);
     }
     .today {
-        border: 1px solid colors.get(red,6) !important;
+        border: 1px solid colors.get(red, 6) !important;
     }
     .holiday {
         background-color: colors.get(green, 1);

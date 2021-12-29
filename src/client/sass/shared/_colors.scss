@@ -9,7 +9,7 @@ $_palette: (
     blue: #e4eff2 #00528c,
     black: #3c3c32 #000000,
     white: #ffffff #ece7d9,
-    sea: #e3f2ef #225c52
+    sea: #e3f2ef #225c52,
 );
 
 @function get($color, $tone: 0) {

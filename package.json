@@ -47,6 +47,6 @@
     "build-database": "node src/server/db.js",
     "build-client": "webpack --mode=development",
     "build-client-prod": "webpack --mode=production",
-    "prettier": "prettier --write --single-quote --tab-width 4 --print-width 120 \"src/**/*.{js,jsx}\" "
+    "prettier": "prettier --write --single-quote --tab-width 4 --print-width 120 \"src/**/*.{js,jsx,scss}\" "
   }
 }
