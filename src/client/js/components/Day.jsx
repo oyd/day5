@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react';
 import { DateTime } from 'luxon';
-import { useParams, useNavigate } from 'react-router-dom';
-import Row from 'react-bootstrap/Row';
+import { useParams } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import useUIStore from '../stores/useUIStore';
+import useNavigateDate from '../hooks/useNavigateDate';
 
 const Day = () => {
     const date = useUIStore((state) => state.date);
-    const setDate = useUIStore((state) => state.setDate);
     const params = useParams();
-    const navigate = useNavigate();
+    const navigateDate = useNavigateDate();
 
-    // Runs every time when renders (better if it's dependent on params.date?)
+    // Validate :date parameter
     useEffect(() => {
-        if (date !== params.date) setDate(params.date);
-    });
+        if (date !== params.date) navigateDate(params.date);
+    }, [params.date]);
 
     return (
         <>

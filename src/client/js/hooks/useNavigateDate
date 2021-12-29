@@ -1,25 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import useUIStore from '../stores/useUIStore';
-
-function isValidDate(dateString) {
-    var regEx = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dateString.match(regEx)) return false; // Invalid format
-    var d = new Date(dateString);
-    var dNum = d.getTime();
-    if (!dNum && dNum !== 0) return false; // NaN value, Invalid date
-    return d.toISOString().slice(0, 10) === dateString;
-}
+import { isValidDate } from '../other/utils';
 
 function useNavigateDate() {
     let navigate = useNavigate();
     const date = useUIStore((state) => state.date);
     const setDate = useUIStore((state) => state.setDate);
     const navigateDate = to => {
-        if (to && to !== date && isValidDate(to)) {
+        if (typeof to === 'undefined') {
+            navigate(date);
+        } else if (to !== date && isValidDate(to)) {
             setDate(to);
             navigate(to);
-        } else {
-            navigate(date);
         }
     };
     
