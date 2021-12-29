@@ -1,7 +1,6 @@
 @use '../shared/colors';
 @use '../shared/tables';
 
-
 .settings {
     table {
         @include tables.ruled;

@@ -15,7 +15,7 @@ const DaySelect = () => {
     ];
 
     return (
-        <Row className="day">
+        <Row>
             <Col md={2}>
                 <Calendar selectedDate={date} onSelectDate={navigateDate} highlights={highlights} />
             </Col>
