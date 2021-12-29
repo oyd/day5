@@ -1,5 +1,5 @@
 import '../sass/styles.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDom from 'react-dom';
 import { HashRouter, Routes, Route, Navigate, Outlet, useParams } from 'react-router-dom';
 import './other/i18n';
@@ -10,6 +10,13 @@ import useUIStore from './stores/useUIStore';
 import DaySelect from './components/DaySelect';
 import Settings from './components/Settings';
 import selectLanguage from './other/selectLanguage';
+import useNavigateDate from './hooks/useNavigateDate';
+
+function NavigateDate() {
+    const navigateDate = useNavigateDate();
+    useEffect(() => navigateDate(),[]);
+    return null;
+}
 
 function Index() {
     const defaultDate = useUIStore((state) => state.date);
@@ -19,7 +26,7 @@ function Index() {
                 <Route path="/" element={<ViewTopNav />}>
                     <Route path="day" element={<DaySelect />}>
                         <Route path=":date" element={<Day />} />
-                        <Route index element={<Navigate to={defaultDate} />} />
+                        <Route index element={<NavigateDate />} />
                     </Route>
                     <Route path="settings" element={<Settings />} />
                     <Route path="about" element={<About />} />
