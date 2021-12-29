@@ -1,12 +1,11 @@
 import '../sass/styles.scss';
 import React, { useEffect } from 'react';
 import ReactDom from 'react-dom';
-import { HashRouter, Routes, Route, Navigate, Outlet, useParams } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './other/i18n';
 import ViewTopNav from './components/ViewTopNav';
 import Day from './components/Day';
 import About from './components/About';
-import useUIStore from './stores/useUIStore';
 import DaySelect from './components/DaySelect';
 import Settings from './components/Settings';
 import selectLanguage from './other/selectLanguage';
@@ -19,7 +18,6 @@ function NavigateDate() {
 }
 
 function Index() {
-    const defaultDate = useUIStore((state) => state.date);
     return (
         <HashRouter>
             <Routes>
