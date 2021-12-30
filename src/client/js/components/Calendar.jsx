@@ -9,7 +9,10 @@ const Calendar = (props) => {
     const firstDayOfWeek = i18n.language === 'en' ? 6 : 0; // 0 - Monday, 6 - Sunday
 
     useEffect(() => {
-        setDisplayDate(DateTime.fromISO(props.selectedDate).startOf('month'));
+        const newDisplayDate = DateTime.fromISO(props.selectedDate).startOf('month');
+        if (+displayDate !== +newDisplayDate) {
+            setDisplayDate(newDisplayDate);
+        }
     }, [props.selectedDate]);
 
     // Helper functions
@@ -107,7 +110,6 @@ const Calendar = (props) => {
             lastDisplayDate = _endOfWeek(lastDateOfMonth),
             weeksCount = Math.round(lastDisplayDate.diff(firstDisplayDate, 'weeks').weeks),
             weekend = [6, 7]; // Highlight Sunday and Saturday
-        console.log('Calendar rendered');
         const weeks = [...Array(weeksCount)].map((value, i) => {
             const weekRow = [...Array(7)].map((value, j) => {
                 const d = firstDisplayDate.plus({ days: i * 7 + j });
@@ -116,12 +118,6 @@ const Calendar = (props) => {
                     return <td className="outside" key={dStr}></td>;
                 }
                 let styles = ['day'];
-                /*if (d < firstDateOfMonth) {
-                    styles.push('old');
-                }
-                if (d > lastDateOfMonth) {
-                    styles.push('new');
-                }*/
                 if (weekend.indexOf(d.weekday) > -1) {
                     styles.push('weekend');
                 }
