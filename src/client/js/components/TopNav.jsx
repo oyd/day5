@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const TopNav = () => {
     const { t } = useTranslation();
