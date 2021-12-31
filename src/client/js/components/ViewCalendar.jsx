@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -14,7 +14,7 @@ function DefaultDateRedirect() {
     return null;
 }
 
-const DaySelect = () => {
+const ViewCalendar = () => {
     const setDate = useUIStore((state) => state.setDate);
     const navigate = useNavigate();
     const { date } = useParams();
@@ -26,21 +26,18 @@ const DaySelect = () => {
         { category: 'vacation', dates: ['2022-01-05', '2022-01-06', '2022-01-07'] },
     ];
 
-    const navDate = useCallback((dStr) => {
-        setDate(dStr);
-        navigate(dStr);
-    });
-
+    // Validate date and save it in UIStore
     if (typeof date === 'undefined' || !isValidDate(date)) return <DefaultDateRedirect />;
+    setDate(date);
 
     return (
         <Row>
             <Col md={2}>
-                <Calendar selectedDate={date} onSelectDate={navDate} highlights={highlights} />
+                <Calendar selectedDate={date} onSelectDate={navigate} highlights={highlights} />
             </Col>
             <Outlet />
         </Row>
     );
 };
 
-export default DaySelect;
+export default ViewCalendar;

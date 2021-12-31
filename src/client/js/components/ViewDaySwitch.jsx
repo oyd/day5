@@ -3,7 +3,7 @@ import { DateTime } from 'luxon';
 import { useParams } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 
-const Day = () => {
+const ViewDaySwitch = () => {
     const { date } = useParams();
 
     return (
@@ -17,4 +17,4 @@ const Day = () => {
     );
 };
 
-export default Day;
+export default ViewDaySwitch;

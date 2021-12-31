@@ -3,20 +3,20 @@ import React, { useEffect } from 'react';
 import ReactDom from 'react-dom';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './other/i18n';
-import ViewTopNav from './components/ViewTopNav';
-import Day from './components/Day';
-import About from './components/About';
-import DaySelect from './components/DaySelect';
-import Settings from './components/Settings';
 import useSettingsStore from './stores/useSettingsStore';
+import ViewTopNav from './components/ViewTopNav';
+import ViewCalendar from './components/ViewCalendar';
+import ViewDaySwitch from './components/ViewDaySwitch';
+import About from './components/About';
+import Settings from './components/Settings';
 
 function DayRoutes() {
     return (
         <HashRouter>
             <Routes>
                 <Route path="/" element={<ViewTopNav />}>
-                    <Route path="day" element={<DaySelect />}>
-                        <Route path=":date" element={<Day />} />
+                    <Route path="day" element={<ViewCalendar />}>
+                        <Route path=":date" element={<ViewDaySwitch />} />
                     </Route>
                     <Route path="settings" element={<Settings />} />
                     <Route path="about" element={<About />} />
