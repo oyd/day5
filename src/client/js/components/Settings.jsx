@@ -4,9 +4,12 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { useTranslation } from 'react-i18next';
 import selectLanguage from '../other/selectLanguage';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const Settings = () => {
     const { t, i18n } = useTranslation();
+    const { setTranslatedTitle } = useDocumentTitle();
+    setTranslatedTitle('settings');
     const languages = ['en', 'ru', 'es'];
     return (
         <Row className="settings justify-content-center">

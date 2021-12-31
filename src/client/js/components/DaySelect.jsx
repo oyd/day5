@@ -5,11 +5,12 @@ import Col from 'react-bootstrap/Col';
 import Calendar from './Calendar';
 import useUIStore from '../stores/useUIStore';
 import { isValidDate } from '../other/utils';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 function DefaultDateRedirect() {
     const navigate = useNavigate();
     const date = useUIStore((state) => state.date);
-    useEffect(() => navigate(date, {replace: true}), []);
+    useEffect(() => navigate(date, { replace: true }), []);
     return null;
 }
 
@@ -17,6 +18,8 @@ const DaySelect = () => {
     const setDate = useUIStore((state) => state.setDate);
     const navigate = useNavigate();
     const { date } = useParams();
+    const { setDocumentTitle } = useDocumentTitle();
+    setDocumentTitle(date);
 
     const highlights = [
         { category: 'holiday', dates: ['2021-12-25', '2022-01-01', '2022-01-02', '2022-01-17'] },
@@ -28,7 +31,7 @@ const DaySelect = () => {
         navigate(dStr);
     });
 
-    if (typeof date === 'undefined' || !isValidDate(date)) return (<DefaultDateRedirect />);
+    if (typeof date === 'undefined' || !isValidDate(date)) return <DefaultDateRedirect />;
 
     return (
         <Row>
