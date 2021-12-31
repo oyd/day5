@@ -3,8 +3,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { useTranslation } from 'react-i18next';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import useSettingsStore from '../stores/useSettingsStore';
+import useDocumentTitle from '@hooks/useDocumentTitle';
+import useSettingsStore from '@stores/useSettingsStore';
 
 const Settings = () => {
     const { t, i18n } = useTranslation();

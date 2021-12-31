@@ -36,7 +36,13 @@ var config = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
+        alias: {
+            '@components': path.resolve(__dirname, 'src/client/js/components'),
+            '@hooks': path.resolve(__dirname, 'src/client/js/hooks'),
+            '@other': path.resolve(__dirname, 'src/client/js/other'),
+            '@stores': path.resolve(__dirname, 'src/client/js/stores')
+          }
     },
     performance: {
         hints: false,

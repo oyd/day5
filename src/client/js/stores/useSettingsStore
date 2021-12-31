@@ -1,7 +1,7 @@
 import create from 'zustand';
 import axios from 'axios';
-import i18n from '../other/i18n';
 import { Settings as luxonSettings } from 'luxon';
+import i18n from '@other/i18n';
 
 const useSettingsStore = create((set, get) => ({
     loaded: false,

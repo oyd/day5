@@ -2,13 +2,9 @@ import '../sass/styles.scss';
 import React, { useEffect } from 'react';
 import ReactDom from 'react-dom';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
-import './other/i18n';
-import useSettingsStore from './stores/useSettingsStore';
-import ViewTopNav from './components/ViewTopNav';
-import ViewCalendar from './components/ViewCalendar';
-import ViewDaySwitch from './components/ViewDaySwitch';
-import About from './components/About';
-import Settings from './components/Settings';
+import '@other/i18n';
+import useSettingsStore from '@stores/useSettingsStore';
+import { ViewTopNav, ViewCalendar, ViewDaySwitch, About, Settings } from '@components';
 
 function DayRoutes() {
     return (

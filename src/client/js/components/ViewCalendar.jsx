@@ -3,9 +3,9 @@ import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Calendar from './Calendar';
-import useUIStore from '../stores/useUIStore';
-import { isValidDate } from '../other/utils';
-import useDocumentTitle from '../hooks/useDocumentTitle';
+import useUIStore from '@stores/useUIStore';
+import { isValidDate } from '@other/utils';
+import useDocumentTitle from '@hooks/useDocumentTitle';
 
 function DefaultDateRedirect() {
     const navigate = useNavigate();
