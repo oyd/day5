@@ -4,7 +4,7 @@ import ReactDom from 'react-dom';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import '@other/i18n';
 import useSettingsStore from '@stores/useSettingsStore';
-import { ViewTopNav, ViewCalendar, ViewDaySwitch, About, Settings } from '@components';
+import { ViewTopNav, ViewCalendar, ViewDayNav, About, Settings } from '@components';
 
 function DayRoutes() {
     return (
@@ -12,7 +12,10 @@ function DayRoutes() {
             <Routes>
                 <Route path="/" element={<ViewTopNav />}>
                     <Route path="day" element={<ViewCalendar />}>
-                        <Route path=":date" element={<ViewDaySwitch />} />
+                        <Route path=":date" element={<ViewDayNav />}>
+                            <Route path="overview" element={<h4>Overview</h4>} />
+                            <Route path="pomodoro" element={<h4>Pomodoro</h4>} />
+                        </Route>
                     </Route>
                     <Route path="settings" element={<Settings />} />
                     <Route path="about" element={<About />} />

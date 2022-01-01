@@ -1,0 +1,11 @@
+@use '../shared/ui';
+@use '../shared/colors';
+
+.day-nav {
+    .nav-link {
+        color: ui.$link-fg;
+        &.active {
+            background-color: colors.get(blue, 6);
+        }
+    }
+}

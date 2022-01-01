@@ -14,6 +14,8 @@ i18n.use(initReactI18next).init({
                     day: 'Day',
                     settings: 'Settings',
                     about: 'About',
+                    overview: 'Overview',
+                    pomodoro: 'Pomodoro',
                 },
                 language: {
                     lng: 'Language',
@@ -29,6 +31,8 @@ i18n.use(initReactI18next).init({
                     day: 'День',
                     settings: 'Настройки',
                     about: 'О программе',
+                    overview: 'Обзор',
+                    pomodoro: 'Помодоро',
                 },
                 language: {
                     lng: 'Язык',
