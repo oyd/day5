@@ -12,10 +12,11 @@ i18n.use(initReactI18next).init({
             translation: {
                 link: {
                     day: 'Day',
+                    pomodoro: 'Pomodoro',
                     settings: 'Settings',
                     about: 'About',
                     overview: 'Overview',
-                    pomodoro: 'Pomodoro',
+                    off: 'Vacation and Holidays',
                 },
                 language: {
                     lng: 'Language',
@@ -29,10 +30,11 @@ i18n.use(initReactI18next).init({
             translation: {
                 link: {
                     day: 'День',
+                    pomodoro: 'Помодоро',
                     settings: 'Настройки',
                     about: 'О программе',
                     overview: 'Обзор',
-                    pomodoro: 'Помодоро',
+                    off: 'Отпуск и праздники',
                 },
                 language: {
                     lng: 'Язык',

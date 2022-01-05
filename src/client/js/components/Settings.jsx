@@ -20,7 +20,7 @@ const Settings = () => {
     }
 
     return (
-        <Row className="settings justify-content-center">
+        <Row className="justify-content-center">
             <Col md={4}>
                 <Form>
                     <Form.Group className="mb-3" controlId="formGroupLaguage">

@@ -4,7 +4,7 @@ import Links from '@components/Links';
 
 const DayNav = () => (
     <Nav variant="pills" className="day-nav flex-column">
-        <Links links={['overview', 'pomodoro']} />
+        <Links links={['overview', 'off']} />
     </Nav>
 );
 

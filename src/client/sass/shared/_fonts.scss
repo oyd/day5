@@ -11,3 +11,9 @@
     src: url('../../../node_modules/roboto-fontface/fonts/roboto/Roboto-Light.woff2') format('woff2'),
         url('../../../node_modules/roboto-fontface/fonts/roboto/Roboto-Light.woff') format('woff');
 }
+
+@font-face {
+    font-family: 'Roboto-Thin';
+    src: url('../../../node_modules/roboto-fontface/fonts/roboto/Roboto-Thin.woff2') format('woff2'),
+        url('../../../node_modules/roboto-fontface/fonts/roboto/Roboto-Thin.woff') format('woff');
+}

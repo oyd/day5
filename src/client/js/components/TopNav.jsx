@@ -6,7 +6,7 @@ import Links from '@components/Links';
 const TopNav = () => (
     <Navbar className="top-nav">
         <Nav>
-            <Links links={['day', 'settings', 'about']} />
+            <Links links={['day', 'pomodoro', 'settings', 'about']} />
         </Nav>
     </Navbar>
 );
