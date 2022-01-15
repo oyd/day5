@@ -1,0 +1,12 @@
+@mixin link($color, $active) {
+    .nav-link {
+        color: $color;
+        &.active {
+            color: $active;
+            background-color: rgba($color, 0.7);
+        }
+        &.disabled {
+            opacity: 0.3;
+        }
+    }
+}

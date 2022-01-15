@@ -7,4 +7,12 @@ function isValidDate(dateString) {
     return d.toISOString().slice(0, 10) === dateString;
 }
 
-export { isValidDate };
+function pad(number, length) {
+    let str = '' + number;
+    while (str.length < length) {
+        str = '0' + str;
+    }
+    return str;
+}
+
+export { isValidDate, pad };
