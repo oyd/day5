@@ -12,26 +12,25 @@ const useSettingsStore = create((set, get) => ({
     loadSettings: () => {
         axios
             .get('/api/settings')
-            .then(response => {
+            .then((response) => {
                 get().setLanguage(response.data.language);
-                set({loaded: true});
+                set({ loaded: true });
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log(error);
             });
     },
     saveSettings: () => {
         const request = {
-            language: i18n.language
+            language: i18n.language,
         };
         axios
-            .put('/api/settings',request)
-            .then(response => {
-            })
-            .catch(error => {
+            .put('/api/settings', request)
+            .then((response) => {})
+            .catch((error) => {
                 console.log(error);
             });
-    }
+    },
 }));
 
 export default useSettingsStore;
