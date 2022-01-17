@@ -7,10 +7,12 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { Play, Pause, Eraser } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
 import usePomodoroStore from '@stores/usePomodoroStore';
+import { setTranslatedTitle } from '@hooks/useDocumentTitle';
 
 const Pomodoro = () => {
     const state = usePomodoroStore();
     const { t } = useTranslation();
+    setTranslatedTitle('pomodoro');
 
     // Renders
 

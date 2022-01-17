@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Calendar from './Calendar';
 import useUIStore from '@stores/useUIStore';
 import { isValidDate } from '@other/utils';
-import useDocumentTitle from '@hooks/useDocumentTitle';
+import { setDocumentTitle } from '@hooks/useDocumentTitle';
 
 function DefaultDateRedirect() {
     const navigate = useNavigate();
@@ -18,7 +18,6 @@ const ViewCalendar = () => {
     const setDate = useUIStore((state) => state.setDate);
     const navigate = useNavigate();
     const { date } = useParams();
-    const { setDocumentTitle } = useDocumentTitle();
     setDocumentTitle(date);
 
     const highlights = [
