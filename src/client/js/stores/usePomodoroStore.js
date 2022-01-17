@@ -5,9 +5,9 @@ const pad = (n, z = 2) => ('00' + n).slice(-z);
 let timer = 0;
 
 const countdowns = {
-    work: 60 * 25,
+    work: 25,
     short: 5,
-    long: 60 * 30,
+    long: 30,
 };
 
 const usePomodoroStore = create((set, get) => ({
@@ -15,7 +15,7 @@ const usePomodoroStore = create((set, get) => ({
     countdown: countdowns['work'],
     started: false,
     paused: true,
-    cycles: 0,
+    count: 0,
 
     modes: () => Object.keys(countdowns),
 
@@ -50,8 +50,14 @@ const usePomodoroStore = create((set, get) => ({
             if (state.countdown > 0) {
                 return { countdown: state.countdown - 1 };
             }
+            let newCount = state.count;
+            let newMode = 'work';
+            if (state.mode === 'work') {
+                newCount += 1;
+                newMode = newCount % 4 == 0 ? 'long' : 'short';
+            }
             clearInterval(timer);
-            return { started: false, paused: true, countdown: countdowns[state.mode] };
+            return { started: false, paused: true, mode: newMode, countdown: countdowns[newMode], count : newCount };
         }),
 }));
 
