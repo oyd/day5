@@ -33,6 +33,12 @@ i18n.use(initReactI18next).init({
                     short: 'Short Break',
                     long: 'Long Break',
                 },
+                about: {
+                    version: 'Version',
+                    author: 'Author',
+                    authorName: 'Oleg Dolzhanskiy',
+                    license: 'License',
+                },
             },
         },
         ru: {
@@ -59,6 +65,12 @@ i18n.use(initReactI18next).init({
                     work: 'Помодоро',
                     short: 'Короткий перерыв',
                     long: 'Длинный перерыв',
+                },
+                about: {
+                    version: 'Версия',
+                    author: 'Автор',
+                    authorName: 'Олег Должанский',
+                    license: 'Лицензия',
                 },
             },
         },

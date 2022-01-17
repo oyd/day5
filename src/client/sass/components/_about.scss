@@ -1,0 +1,14 @@
+@use '../shared/tables';
+@use '../shared/colors';
+
+.about {
+    @include tables.ruled;
+    margin: 0 auto;
+    th {
+        padding-left: 1.5rem;
+    }
+    td {
+        padding-right: 1.5rem;
+        color: colors.get(gray, 7);
+    }
+}
