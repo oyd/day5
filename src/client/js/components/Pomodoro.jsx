@@ -10,7 +10,7 @@ import usePomodoroStore from '@stores/usePomodoroStore';
 import { setTranslatedTitle } from '@hooks/useDocumentTitle';
 
 const Pomodoro = () => {
-    const state = usePomodoroStore();
+    const { mode, started, paused, modes, getTime, selectMode, start, pause, reset } = usePomodoroStore();
     const { t } = useTranslation();
     setTranslatedTitle('pomodoro');
 
@@ -18,9 +18,9 @@ const Pomodoro = () => {
 
     function renderNav() {
         return (
-            <Nav variant="pills" className="justify-content-center" activeKey={state.mode} onSelect={state.selectMode}>
-                {state.modes().map((c) => (
-                    <Nav.Link eventKey={c} key={c} disabled={state.started}>
+            <Nav variant="pills" className="justify-content-center" activeKey={mode} onSelect={selectMode}>
+                {modes().map((c) => (
+                    <Nav.Link eventKey={c} key={c} disabled={started}>
                         {t('pomodoro.' + c)}
                     </Nav.Link>
                 ))}
@@ -41,9 +41,9 @@ const Pomodoro = () => {
         }
     }
 
-    function renderButton(btn, handle) {
+    function renderButton(btn, handle, disabled) {
         return (
-            <Button onClick={handle}>
+            <Button onClick={handle} disabled={disabled}>
                 {renderIcon(btn)}
                 {t('pomodoro.' + btn)}
             </Button>
@@ -53,8 +53,9 @@ const Pomodoro = () => {
     function renderButtons() {
         return (
             <ButtonGroup>
-                {state.paused ? renderButton('start', state.start) : renderButton('pause', state.pause)}
-                {renderButton('reset', state.reset)}
+                {renderButton('start', start, !paused)}
+                {renderButton('pause', pause, paused)}
+                {renderButton('reset', reset, !started)}
             </ButtonGroup>
         );
     }
@@ -62,9 +63,9 @@ const Pomodoro = () => {
     return (
         <Row className="justify-content-center">
             <Col className="text-center">
-                <div className={['pomodoro', state.mode].join(' ')}>
+                <div className={['pomodoro', mode].join(' ')}>
                     {renderNav()}
-                    <time>{state.getTime()}</time>
+                    <time>{getTime()}</time>
                     {renderButtons()}
                 </div>
             </Col>

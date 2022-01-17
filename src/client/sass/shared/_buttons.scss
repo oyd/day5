@@ -14,5 +14,8 @@
         color: $color;
     }
 
-    /* [ ] Implement :disabled, .disabled */
+    &.disabled,
+    &:disabled {
+        opacity: 0.3;
+    }
 }
