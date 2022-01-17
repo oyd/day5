@@ -33,6 +33,13 @@ var config = {
                     filename: './fonts/[name][ext]',
                 },
             },
+            {
+                test: /\.aac$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: './assets/[name][ext]',
+                },
+            }
         ],
     },
     resolve: {

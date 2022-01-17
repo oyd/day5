@@ -1,4 +1,5 @@
 import create from 'zustand';
+import '../../assets/bell.aac';
 
 const pad = (n, z = 2) => ('00' + n).slice(-z);
 
@@ -56,6 +57,8 @@ const usePomodoroStore = create((set, get) => ({
                 newCount += 1;
                 newMode = newCount % 4 == 0 ? 'long' : 'short';
             }
+            const audio = new Audio('/assets/bell.aac');
+            audio.play();
             clearInterval(timer);
             return { started: false, paused: true, mode: newMode, countdown: countdowns[newMode], count: newCount };
         }),
