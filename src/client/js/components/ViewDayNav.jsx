@@ -3,6 +3,7 @@ import { DateTime } from 'luxon';
 import { Outlet, useNavigate, useParams, useMatch } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import useUIStore from '@stores/useUIStore';
+import useDayStore from '@stores/useDayStore';
 import DayNav from '@components/DayNav';
 
 function DefaultViewRedirect() {
@@ -15,10 +16,12 @@ function DefaultViewRedirect() {
 const ViewDayNav = () => {
     const { date } = useParams();
     const setDayView = useUIStore((state) => state.setDayView);
+    const loadDay = useDayStore((state) => state.loadDay);
     const match = useMatch('/day/:date/:view');
 
     if (!match) return <DefaultViewRedirect />;
     setDayView(match.params.view);
+    loadDay(date);
 
     return (
         <>
