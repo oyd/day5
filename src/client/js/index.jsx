@@ -4,7 +4,7 @@ import ReactDom from 'react-dom';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import '@other/i18n';
 import useSettingsStore from '@stores/useSettingsStore';
-import { ViewTopNav, ViewCalendar, ViewDayNav, About, Settings, Pomodoro } from '@components';
+import { ViewTopNav, ViewCalendar, ViewDayNav, About, Settings, Pomodoro, Waiting } from '@components';
 
 function DayRoutes() {
     return (
@@ -36,7 +36,7 @@ function Index() {
         loadSettings();
     }, []);
 
-    return settingLoaded && <DayRoutes />;
+    return settingLoaded ? <DayRoutes /> : <Waiting />;
 }
 
 ReactDom.render(<Index />, document.body.appendChild(document.createElement('div')));
