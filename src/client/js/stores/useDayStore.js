@@ -2,7 +2,7 @@ import create from 'zustand';
 import axios from 'axios';
 
 const defaultDay = {
-    pomodoros: 0
+    pomodoros: 0,
 };
 
 const useDayStore = create((set, get) => ({
@@ -10,16 +10,15 @@ const useDayStore = create((set, get) => ({
     day: '',
     pomodoros: 0,
     loadDay: (day) => {
-        set({loading : true});
+        set({ loading: true });
         axios
-            .get('/api/day/'+day)
+            .get('/api/day/' + day)
             .then((response) => {
                 console.log(response.data);
                 if (response.data) {
-                    set({ loading : false, day : response.data.day, pomodoros : response.data.pomodoros });
-                }
-                else {
-                    set({ loading : false, day : day, ...defaultDay });
+                    set({ loading: false, day: response.data.day, pomodoros: response.data.pomodoros });
+                } else {
+                    set({ loading: false, day: day, ...defaultDay });
                 }
             })
             .catch((error) => console.log(error));
@@ -28,7 +27,7 @@ const useDayStore = create((set, get) => ({
         const state = get();
         const request = {
             day: state.day,
-            pomodoros: state.pomodoros
+            pomodoros: state.pomodoros,
         };
         axios
             .put('/api/day', request)
@@ -36,7 +35,7 @@ const useDayStore = create((set, get) => ({
             .catch((error) => {
                 console.log(error);
             });
-    }
+    },
 }));
 
 export default useDayStore;

@@ -1,8 +1,6 @@
 import create from 'zustand';
 import '../../assets/bell.aac';
 
-const pad = (n, z = 2) => ('00' + n).slice(-z);
-
 let timer = 0;
 
 const countdowns = {
@@ -19,13 +17,6 @@ const usePomodoroStore = create((set, get) => ({
     count: 0,
 
     modes: () => Object.keys(countdowns),
-
-    getTime: () => {
-        const { countdown } = get();
-        const seconds = countdown % 60;
-        const minutes = (countdown - seconds) / 60;
-        return `${pad(minutes)}:${pad(seconds)}`;
-    },
 
     selectMode: (newMode) => set({ mode: newMode, countdown: countdowns[newMode] }),
 

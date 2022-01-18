@@ -46,27 +46,22 @@ function getDay(dayId) {
     return DB().queryFirstRow('SELECT * FROM days WHERE day=?', dayId);
 }
 
-router
-    .route('/day/:dayId')
-    .get(function(req, res) {
-        console.log('Day get ' + req.params.dayId);
-        res.send(getDay(req.params.dayId));
-    })
+router.route('/day/:dayId').get(function (req, res) {
+    console.log('Day get ' + req.params.dayId);
+    res.send(getDay(req.params.dayId));
+});
 
-router
-    .route('/day')
-    .put(function(req, res) {
-        const dayId = req.body.day;
-        const oldDay = getDay(dayId);
-        const newDay = req.body;
-        if (oldDay) {
-            DB().update('days', newDay, { day : dayId});
-        }
-        else {
-            DB().insert('days', newDay);
-        }
-        res.send(newDay);
-    });
+router.route('/day').put(function (req, res) {
+    const dayId = req.body.day;
+    const oldDay = getDay(dayId);
+    const newDay = req.body;
+    if (oldDay) {
+        DB().update('days', newDay, { day: dayId });
+    } else {
+        DB().insert('days', newDay);
+    }
+    res.send(newDay);
+});
 
 app.use('/api', router);
 
