@@ -8,7 +8,7 @@ import PomodoroButtons from './PomodoroButtons';
 import PomodoroTime from './PomodoroTime';
 
 const Pomodoro = () => {
-    const mode = usePomodoroStore((state) => state.mode);
+    const mode = usePomodoroStore(({ mode }) => mode);
     setTranslatedTitle('pomodoro');
 
     return (

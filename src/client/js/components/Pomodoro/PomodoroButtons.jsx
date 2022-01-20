@@ -7,11 +7,11 @@ import usePomodoroStore from '@stores/usePomodoroStore';
 
 const PomodoroButtons = () => {
     const { t } = useTranslation();
-    const started = usePomodoroStore((state) => state.started);
-    const paused = usePomodoroStore((state) => state.paused);
-    const start = usePomodoroStore((state) => state.start);
-    const pause = usePomodoroStore((state) => state.pause);
-    const reset = usePomodoroStore((state) => state.reset);
+    const started = usePomodoroStore(({ started }) => started);
+    const paused = usePomodoroStore(({ paused }) => paused);
+    const start = usePomodoroStore(({ start }) => start);
+    const pause = usePomodoroStore(({ pause }) => pause);
+    const reset = usePomodoroStore(({ reset }) => reset);
 
     function renderIcon(icon) {
         switch (icon) {

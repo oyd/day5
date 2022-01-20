@@ -2,7 +2,7 @@ import React from 'react';
 import usePomodoroStore from '@stores/usePomodoroStore';
 
 const PomodoroTime = () => {
-    const countdown = usePomodoroStore((state) => state.countdown);
+    const countdown = usePomodoroStore(({ countdown }) => countdown);
     const pad = (n, z = 2) => ('00' + n).slice(-z);
 
     function renderTime() {

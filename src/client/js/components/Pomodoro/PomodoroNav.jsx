@@ -5,10 +5,10 @@ import usePomodoroStore from '@stores/usePomodoroStore';
 
 const PomodoroNav = () => {
     const { t } = useTranslation();
-    const mode = usePomodoroStore((state) => state.mode);
-    const started = usePomodoroStore((state) => state.started);
-    const selectMode = usePomodoroStore((state) => state.selectMode);
-    const modes = usePomodoroStore((state) => state.modes);
+    const mode = usePomodoroStore(({ mode }) => mode);
+    const started = usePomodoroStore(({ started }) => started);
+    const selectMode = usePomodoroStore(({ selectMode }) => selectMode);
+    const modes = usePomodoroStore(({ modes }) => modes);
     return (
         <Nav variant="pills" className="justify-content-center" activeKey={mode} onSelect={selectMode}>
             {modes().map((c) => (
