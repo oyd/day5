@@ -5,7 +5,7 @@ import '../../assets/bell.aac';
 let timer = 0;
 
 const countdowns = {
-    work: 60 * 25,
+    work: 60 * 5,
     short: 60 * 5,
     long: 60 * 30,
 };
@@ -48,7 +48,7 @@ const usePomodoroStore = create((set, get) => ({
             if (state.mode === 'work') {
                 newCount += 1;
                 newMode = newCount % 4 == 0 ? 'long' : 'short';
-                useDayStore.getState().addPomodoro(true);
+                useDayStore.getState().addPomodoroToday();
             }
             const audio = new Audio('/assets/bell.aac');
             audio.play();

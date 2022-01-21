@@ -54,25 +54,29 @@ const useDayStore = create((set, get) => ({
         };
         state.save(all);
     },
-    addPomodoro: (today = false) =>
+    _setPomodoro: (day, change) =>
         set((state) => {
-            const newPomodoros = state.pomodoros + 1;
-            const newDay = today ? DateTime.local().toISODate() : state.day;
-            state.save({ day: newDay, pomodoros: newPomodoros });
-            if (newDay === state.day) {
-                return { daypomodoros: newPomodoros };
+            const newPomodoros = state.pomodoros + change;
+            if (newPomodoros >= 0) {
+                state.save({ day: day, pomodoros: newPomodoros });
+                if (day === state.day) {
+                    return { pomodoros: newPomodoros };
+                }
             }
             return {};
         }),
-    removePomodoro: () =>
-        set((state) => {
-            if (state.pomodoros > 0) {
-                const newPomodoros = state.pomodoros - 1;
-                state.save({ day: state.day, pomodoros: newPomodoros });
-                return { pomodoros: newPomodoros };
-            }
-            return {};
-        }),
+    addPomodoro: () => {
+        const state = get();
+        state._setPomodoro(state.day, 1);
+    },
+    addPomodoroToday: () => {
+        const state = get();
+        state._setPomodoro(DateTime.local().toISODate(), 1);
+    },
+    removePomodoro: () => {
+        const state = get();
+        state._setPomodoro(state.day, -1);
+    },
 }));
 
 export default useDayStore;
