@@ -5,7 +5,7 @@ import '../../assets/bell.aac';
 let timer = 0;
 
 const countdowns = {
-    work: 60 * 5,
+    work: 60 * 25,
     short: 60 * 5,
     long: 60 * 30,
 };
