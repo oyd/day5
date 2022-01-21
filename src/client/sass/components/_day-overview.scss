@@ -1,0 +1,28 @@
+@use '../shared/colors';
+@use '../shared/ui';
+@use '../shared/tables';
+@use '../shared/buttons';
+
+.day-overview-table {
+    @include tables.ruled;
+    .controls {
+        text-align: right;
+        button {
+            border: 0;
+            background: none;
+            opacity: 0.6;
+            &:hover {
+                opacity: 1;
+            }
+            &.btn-add {
+                color: colors.get(green, 10);
+            }
+            &.btn-remove {
+                color: colors.get(red, 10);
+            }
+            &.btn-edit {
+                color: colors.get(sea, 10);
+            }
+        }
+    }
+}
