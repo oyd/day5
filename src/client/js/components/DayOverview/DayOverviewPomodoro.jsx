@@ -20,9 +20,11 @@ const DayOverviewPomodoro = () => {
                 <button className="btn-add" onClick={addPomodoro}>
                     <PlusCircle />
                 </button>
-                <button className="btn-remove" onClick={removePomodoro}>
-                    <DashCircle />
-                </button>
+                {pomodoros > 0 && (
+                    <button className="btn-remove" onClick={removePomodoro}>
+                        <DashCircle />
+                    </button>
+                )}
             </td>
         </tr>
     );

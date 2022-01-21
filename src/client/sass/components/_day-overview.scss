@@ -14,6 +14,10 @@
             &:hover {
                 opacity: 1;
             }
+            &:disabled,
+            &:disabled:hover {
+                opacity: 0.1;
+            }
             &.btn-add {
                 color: colors.get(green, 10);
             }
