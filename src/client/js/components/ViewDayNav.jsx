@@ -8,15 +8,15 @@ import DayNav from '@components/DayNav';
 
 function DefaultViewRedirect() {
     const navigate = useNavigate();
-    const dayView = useUIStore((state) => state.dayView);
+    const dayView = useUIStore(({ dayView }) => dayView);
     useEffect(() => navigate(dayView, { replace: true }), []);
     return null;
 }
 
 const ViewDayNav = () => {
     const { date } = useParams();
-    const setDayView = useUIStore((state) => state.setDayView);
-    const loadDay = useDayStore((state) => state.loadDay);
+    const setDayView = useUIStore(({ setDayView }) => setDayView);
+    const loadDay = useDayStore(({ load }) => load);
     const match = useMatch('/day/:date/:view');
 
     if (!match) return <DefaultViewRedirect />;
