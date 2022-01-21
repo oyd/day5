@@ -1,5 +1,6 @@
 import create from 'zustand';
 import axios from 'axios';
+import { DateTime } from 'luxon';
 
 const holidays = [
     'VAC', // Vacation
@@ -53,11 +54,15 @@ const useDayStore = create((set, get) => ({
         };
         state.save(all);
     },
-    addPomodoro: () =>
+    addPomodoro: (today = false) =>
         set((state) => {
             const newPomodoros = state.pomodoros + 1;
-            state.save({ day: state.day, pomodoros: newPomodoros });
-            return { pomodoros: newPomodoros };
+            const newDay = today ? DateTime.local().toISODate() : state.day;
+            state.save({ day: newDay, pomodoros: newPomodoros });
+            if (newDay === state.day) {
+                return { daypomodoros: newPomodoros };
+            }
+            return {};
         }),
     removePomodoro: () =>
         set((state) => {

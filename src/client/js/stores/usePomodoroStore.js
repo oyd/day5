@@ -1,4 +1,5 @@
 import create from 'zustand';
+import useDayStore from './useDayStore';
 import '../../assets/bell.aac';
 
 let timer = 0;
@@ -47,6 +48,7 @@ const usePomodoroStore = create((set, get) => ({
             if (state.mode === 'work') {
                 newCount += 1;
                 newMode = newCount % 4 == 0 ? 'long' : 'short';
+                useDayStore.getState().addPomodoro(true);
             }
             const audio = new Audio('/assets/bell.aac');
             audio.play();
