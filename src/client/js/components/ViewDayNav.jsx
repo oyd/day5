@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { DateTime } from 'luxon';
 import { Outlet, useNavigate, useParams, useMatch } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import useUIStore from '@stores/useUIStore';
 import useDayStore from '@stores/useDayStore';
 import DayNav from '@components/DayNav';
+import DayTitle from '@components/DayTitle';
 
 function DefaultViewRedirect() {
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ const ViewDayNav = () => {
     return (
         <>
             <Col md={8}>
-                <h1>{DateTime.fromISO(date).toLocaleString(DateTime.DATE_FULL)}</h1>
+                <DayTitle />
                 <Outlet />
             </Col>
             <Col md={2}>

@@ -3,6 +3,7 @@ import { Pomodoro } from './Pomodoro';
 import About from './About';
 import Calendar from './Calendar';
 import DayNav from './DayNav';
+import DayTitle from './DayTitle';
 import Links from './Links';
 import Settings from './Settings';
 import TopNav from './TopNav';
@@ -16,6 +17,7 @@ export {
     Calendar,
     DayNav,
     DayOverview,
+    DayTitle,
     Links,
     Pomodoro,
     Settings,
