@@ -62,6 +62,26 @@ router.route('/day').put(function (req, res) {
     res.send(newDay);
 });
 
+// Route /api/day/off/:prefix
+
+router.route('/day/off/:prefix').get(function (req, res) {
+    const days = DB().query("SELECT * FROM days WHERE (day LIKE '" + req.params.prefix + "%')");
+    let response = { vacation: [], holiday: [] };
+    days.map(function (day) {
+        if (day.off) {
+            const off = JSON.parse(day.off);
+            if (off.length) {
+                if (off.includes('VAC')) {
+                    response.vacation.push(day.day);
+                } else {
+                    response.holiday.push(day.day);
+                }
+            }
+        }
+    });
+    res.send(response);
+});
+
 app.use('/api', router);
 
 app.listen(port, () => console.log(`Day 5 is listening on port ${port}!`));
