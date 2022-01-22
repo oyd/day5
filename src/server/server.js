@@ -47,7 +47,6 @@ function getDay(dayId) {
 }
 
 router.route('/day/:dayId').get(function (req, res) {
-    console.log('Day get ' + req.params.dayId);
     res.send(getDay(req.params.dayId));
 });
 

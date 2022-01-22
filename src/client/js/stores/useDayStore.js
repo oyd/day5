@@ -18,26 +18,31 @@ const holidays = [
 
 const defaultDay = {
     pomodoros: 0,
+    off: [],
 };
 
 const useDayStore = create((set, get) => ({
     loading: false,
     day: '',
     pomodoros: 0,
+    off: [],
+
     load: (day) => {
         set({ loading: true });
         axios
             .get('/api/day/' + day)
             .then((response) => {
-                console.log(response.data);
                 if (response.data) {
-                    set({ loading: false, ...response.data });
+                    let newDay = { loading: false, ...response.data };
+                    newDay.off = newDay.off ? JSON.parse(newDay.off) : defaultDay.off;
+                    set(newDay);
                 } else {
                     set({ loading: false, day: day, ...defaultDay });
                 }
             })
             .catch((error) => console.log(error));
     },
+
     save: (partial) => {
         axios
             .put('/api/day', partial)
@@ -46,14 +51,17 @@ const useDayStore = create((set, get) => ({
                 console.log(error);
             });
     },
+
     saveAll: () => {
         const state = get();
         const all = {
             day: state.day,
             pomodoros: state.pomodoros,
+            off: JSON.stringify(state.off),
         };
         state.save(all);
     },
+
     _setPomodoro: (day, change) =>
         set((state) => {
             const newPomodoros = state.pomodoros + change;
@@ -65,14 +73,17 @@ const useDayStore = create((set, get) => ({
             }
             return {};
         }),
+
     addPomodoro: () => {
         const state = get();
         state._setPomodoro(state.day, 1);
     },
+
     addPomodoroToday: () => {
         const state = get();
         state._setPomodoro(DateTime.local().toISODate(), 1);
     },
+
     removePomodoro: () => {
         const state = get();
         state._setPomodoro(state.day, -1);
