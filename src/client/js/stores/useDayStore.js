@@ -7,6 +7,7 @@ const holidays = [
     'NYD', // New Years Day
     'MLK', // Martin Luther King Day
     'PRS', // Presidents Day
+    'GFR', // Good Friday
     'MEM', // Memorial Day
     'IND', // Independence Day
     'LAB', // Labor Day
