@@ -4,6 +4,7 @@ import About from './About';
 import Calendar from './Calendar';
 import DayNav from './DayNav';
 import DayTitle from './DayTitle';
+import LayoutCenter from './LayoutCenter';
 import Links from './Links';
 import Settings from './Settings';
 import TopNav from './TopNav';
@@ -18,6 +19,7 @@ export {
     DayNav,
     DayOverview,
     DayTitle,
+    LayoutCenter,
     Links,
     Pomodoro,
     Settings,

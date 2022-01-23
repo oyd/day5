@@ -3,7 +3,6 @@
 
 .about {
     @include tables.ruled;
-    margin: 0 auto;
     th {
         padding-left: 1.5rem;
     }

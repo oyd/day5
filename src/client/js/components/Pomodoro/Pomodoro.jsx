@@ -1,8 +1,7 @@
 import React from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import usePomodoroStore from '@stores/usePomodoroStore';
 import { setTranslatedTitle } from '@hooks/useDocumentTitle';
+import LayoutCenter from '@components/LayoutCenter';
 import PomodoroNav from './PomodoroNav';
 import PomodoroButtons from './PomodoroButtons';
 import PomodoroTime from './PomodoroTime';
@@ -12,15 +11,13 @@ const Pomodoro = () => {
     setTranslatedTitle('pomodoro');
 
     return (
-        <Row>
-            <Col className="text-center">
-                <div className={['pomodoro', mode].join(' ')}>
-                    <PomodoroNav />
-                    <PomodoroTime />
-                    <PomodoroButtons />
-                </div>
-            </Col>
-        </Row>
+        <LayoutCenter>
+            <div className={['pomodoro', mode].join(' ')}>
+                <PomodoroNav />
+                <PomodoroTime />
+                <PomodoroButtons />
+            </div>
+        </LayoutCenter>
     );
 };
 
