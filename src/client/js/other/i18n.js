@@ -39,7 +39,7 @@ i18n.use(initReactI18next).init({
                     authorName: 'Oleg Dolzhanskiy',
                     license: 'License',
                 },
-                off: {
+                holidays: {
                     VAC: 'Vacation',
                     NYD: "New Year's Day",
                     MLK: 'Birthday of Martin Luther King, Jr.',
@@ -85,7 +85,7 @@ i18n.use(initReactI18next).init({
                     authorName: 'Олег Должанский',
                     license: 'Лицензия',
                 },
-                off: {
+                holidays: {
                     VAC: 'Отпуск',
                     NYD: 'Новый год',
                     MLK: 'День Мартина Лютера Кинга',

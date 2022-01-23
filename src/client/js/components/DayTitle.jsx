@@ -6,12 +6,12 @@ import useDayStore from '@stores/useDayStore';
 const DayTitle = () => {
     const { t } = useTranslation();
     const day = useDayStore(({ day }) => day);
-    const off = useDayStore(({ off }) => off);
-    const offTitle = off.length ? ' — ' + off.map((o) => t('off.' + o)).join('. ') : '';
+    const holidays = useDayStore(({ holidays }) => holidays);
+    const holidaysTitle = holidays.length ? ' — ' + holidays.map((h) => t('holidays.' + h)).join('. ') : '';
     return (
         <h1>
             {DateTime.fromISO(day).toLocaleString(DateTime.DATE_FULL)}
-            {offTitle}
+            {holidaysTitle}
         </h1>
     );
 };

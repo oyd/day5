@@ -18,14 +18,16 @@ const holidays = [
 
 const defaultDay = {
     pomodoros: 0,
-    off: [],
+    off: 0,
+    holidays: [],
 };
 
 const useDayStore = create((set, get) => ({
     loading: false,
     day: '',
     pomodoros: 0,
-    off: [],
+    off: 0,
+    holidays: [],
 
     load: (day) => {
         set({ loading: true });
@@ -34,7 +36,7 @@ const useDayStore = create((set, get) => ({
             .then((response) => {
                 if (response.data) {
                     let newDay = { loading: false, ...response.data };
-                    newDay.off = newDay.off ? JSON.parse(newDay.off) : defaultDay.off;
+                    newDay.holidays = newDay.holidays ? JSON.parse(newDay.holidays) : defaultDay.holidays;
                     set(newDay);
                 } else {
                     set({ loading: false, day: day, ...defaultDay });
@@ -57,7 +59,8 @@ const useDayStore = create((set, get) => ({
         const all = {
             day: state.day,
             pomodoros: state.pomodoros,
-            off: JSON.stringify(state.off),
+            off: state.off,
+            holidays: JSON.stringify(state.off),
         };
         state.save(all);
     },
